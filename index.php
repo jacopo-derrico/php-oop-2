@@ -15,7 +15,29 @@
         }
     };
     
-    
+    $productsArray = [ 
+        $collare = new Product(
+            'Collare',
+            15,
+            'cane',
+            'https://picsum.photos/picsum/200/300',
+            'Accessories'
+        ),
+        $croc15 = new Product(
+            'Crocchette 15kg',
+            45,
+            'cane',
+            'https://picsum.photos/picsum/200/300',
+            'Food'
+        ),
+        $topino = new Product(
+            'Topino lana',
+            4,
+            'gatto',
+            'https://picsum.photos/picsum/200/300',
+            'Toys'
+        )
+     ]
 ?>
 
 <!DOCTYPE html>
