@@ -15,7 +15,14 @@
         }
     };
 
+    trait PriceFormatter {
+        public function formatPrice() {
+            return number_format($this->prezzo, 2, ',', '.') . ' €';
+        }
+    }; 
+
     class Accessory extends Product {
+        use PriceFormatter;
         public $materiale;
         public $taglia;
     
@@ -28,6 +35,7 @@
     
     
     class Food extends Product {
+        use PriceFormatter;
         public $scadenza; // MM/YYYY
         public $calorie;
     
@@ -44,6 +52,7 @@
     
     
     class Toy extends Product {
+        use PriceFormatter;
         public $eta;
         public $batterie;
     
@@ -61,7 +70,7 @@
             }
         }
     };
-    
+
     
     $productsArray = [ 
         $collare = new Accessory(
@@ -91,7 +100,7 @@
             'Cucciolo',
             true
         )
-     ]
+        ];
 ?>
 
 <!DOCTYPE html>
@@ -124,7 +133,7 @@
                 <div class="card-body">
                     <h5 class="card-title"><?= $product->titolo ?></h5>
                     <h6 class="card-text">
-                        <?= $product->prezzo ?> €
+                        <?= $product->formatPrice();?>
                     </h6>
                 </div>
                 <div class="card-footer text-body-secondary">
