@@ -133,7 +133,14 @@
                 <div class="card-body">
                     <h5 class="card-title"><?= $product->titolo ?></h5>
                     <h6 class="card-text">
-                        <?= $product->formatPrice();?>
+                        <?php try {
+                                // Attempt to format and display the price
+                                echo $product->formatPrice();
+                            } catch (Exception $e) {
+                                // Show error if can't
+                                echo "Error formatting price: " . $e->getMessage();
+                            }
+                        ?>
                     </h6>
                 </div>
                 <div class="card-footer text-body-secondary">
