@@ -14,28 +14,82 @@
             $this->categoria =$categoria;
         }
     };
+
+    class Accessory extends Product {
+        public $materiale;
+        public $taglia;
+    
+        function __construct($titolo, $prezzo, $animale, $img, $categoria, $materiale, $taglia) {
+            parent::__construct($titolo, $prezzo, $animale, $img, $categoria);
+            $this->materiale = $materiale;
+            $this->taglia = $taglia;
+        }
+    };
+    
+    
+    class Food extends Product {
+        public $scadenza; // MM/YYYY
+        public $calorie;
+    
+        function __construct($titolo, $prezzo, $animale, $img, $categoria, $scadenza, $calorie) {
+            parent::__construct($titolo, $prezzo, $animale, $img, $categoria);
+            $this->scadenza = $scadenza;
+            $this->calorie = $calorie;
+        }
+
+        function getCal() {
+            return $this->calorie . 'kcal' ;
+        }
+    };
+    
+    
+    class Toy extends Product {
+        public $eta;
+        public $batterie;
+    
+        function __construct($titolo, $prezzo, $animale, $img, $categoria, $eta, $batterie) {
+            parent::__construct($titolo, $prezzo, $animale, $img, $categoria);
+            $this->eta = $eta;
+            $this->batterie = $batterie;
+        }
+
+        function hasBatteries() {
+            if ($this->batterie) {
+                return $this->batterie = 'Batterie incluse';
+            } else {
+                return $this->batterie = 'Batterie NON incluse';
+            }
+        }
+    };
+    
     
     $productsArray = [ 
-        $collare = new Product(
+        $collare = new Accessory(
             'Collare',
             15,
             'cane',
             'https://picsum.photos/400/400',
-            'Accessories'
+            'Accessories',
+            'Pelle',
+            'L'
         ),
-        $croc15 = new Product(
+        $croc15 = new Food(
             'Crocchette 15kg',
             45,
             'cane',
             'https://picsum.photos/400/400',
-            'Food'
+            'Food',
+            '08/2025',
+            350
         ),
-        $topino = new Product(
+        $topino = new Toy(
             'Topino lana',
             4,
             'gatto',
             'https://picsum.photos/400/400',
-            'Toys'
+            'Toys',
+            'Cucciolo',
+            true
         )
      ]
 ?>
